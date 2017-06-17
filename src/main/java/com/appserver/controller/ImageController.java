@@ -22,6 +22,12 @@ public class ImageController {
         @Autowired
         private ImageService imageService;
 
+    @RequestMapping(value = "/index.jsp", method = RequestMethod.GET)
+    public class RootController {
+        public String root() {
+            return "index";
+        }
+
         @RequestMapping(value = "/image", method = RequestMethod.GET, produces = "application/json")
         public ResponseEntity<List<Image>> images() {
 
@@ -56,7 +62,7 @@ public class ImageController {
             return new ResponseEntity<Image>(image, headers, HttpStatus.NO_CONTENT);
         }
 
-        @RequestMapping(value = "/image", method = RequestMethod.POST,produces = "application/json")
+        @RequestMapping(value = "/image", method = RequestMethod.POST, produces = "application/json")
         public ResponseEntity<Image> createImage(@RequestBody Image image) {
             HttpHeaders headers = new HttpHeaders();
             if (image == null) {
@@ -82,3 +88,4 @@ public class ImageController {
         }
 
     }
+}
