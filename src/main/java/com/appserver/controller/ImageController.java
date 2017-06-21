@@ -1,17 +1,19 @@
 package com.appserver.controller;
 import java.util.List;
-
+import com.appserver.service.S3Wrapper;
+import com.amazonaws.auth.profile.ProfileCredentialsProvider;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.PutObjectResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.appserver.bean.Image;
 import com.appserver.service.ImageService;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  * Created by Saurabh on 15-04-2017.
@@ -21,6 +23,8 @@ public class ImageController {
 
         @Autowired
         private ImageService imageService;
+        @Autowired
+        private S3Wrapper s3Wrapper;
 
     @RequestMapping(value = "/index.jsp", method = RequestMethod.GET)
     public class RootController {
@@ -85,6 +89,11 @@ public class ImageController {
             imageService.updateImage(image);
             headers.add("Image Updated  - ", String.valueOf(imageId));
             return new ResponseEntity<Image>(image, headers, HttpStatus.OK);
+        }
+
+        @RequestMapping(value = "/upload", method = RequestMethod.POST)
+        public List<PutObjectResult> upload(@RequestParam("file") MultipartFile[] multipartFiles) {
+            return s3Wrapper.upload(multipartFiles);
         }
 
     }
