@@ -1,4 +1,6 @@
 /Users/saurabhnagpal/visie/appserver/src/main/java/com/appserver/dao/ImageDao.java
+/Users/saurabhnagpal/visie/appserver/src/main/java/com/appserver/bean/AWSConfiguration.java
+/Users/saurabhnagpal/visie/appserver/src/main/java/com/appserver/service/S3Wrapper.java
 /Users/saurabhnagpal/visie/appserver/src/main/java/com/appserver/service/ImageServiceImpl.java
 /Users/saurabhnagpal/visie/appserver/src/main/java/com/appserver/service/ImageService.java
 /Users/saurabhnagpal/visie/appserver/src/main/java/com/appserver/dao/ImageDaoImpl.java

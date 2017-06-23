@@ -1,5 +1,6 @@
 package com.appserver.controller;
 import java.util.List;
+
 import com.appserver.service.S3Wrapper;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.services.s3.AmazonS3;
@@ -26,11 +27,11 @@ public class ImageController {
         @Autowired
         private S3Wrapper s3Wrapper;
 
-    @RequestMapping(value = "/index.jsp", method = RequestMethod.GET)
-    public class RootController {
-        public String root() {
-            return "index";
-        }
+  //  @RequestMapping(value = "/index.jsp", method = RequestMethod.GET)
+   // public class RootController {
+    //    public String root() {
+      //      return "index";
+       // }
 
         @RequestMapping(value = "/image", method = RequestMethod.GET, produces = "application/json")
         public ResponseEntity<List<Image>> images() {
@@ -97,4 +98,3 @@ public class ImageController {
         }
 
     }
-}

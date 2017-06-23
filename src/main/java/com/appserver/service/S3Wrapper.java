@@ -1,5 +1,6 @@
 package com.appserver.service;
 
+import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.*;
 import org.apache.commons.io.IOUtils;
@@ -29,7 +30,7 @@ import java.util.List;
 public class S3Wrapper {
 
     @Autowired
-    private AmazonS3Client amazonS3Client;
+    private AmazonS3 amazonS3Client;
 
     @Value("${cloud.aws.s3.bucket}")
     private String bucket;
